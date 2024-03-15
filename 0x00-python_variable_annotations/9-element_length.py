@@ -7,6 +7,7 @@ from typing import Sequence, Tuple
 
 
 def element_length(lst: Sequence[str]) -> Sequence[Tuple[str, int]]:
+    
     """
     Returns a sequence of tuples containing each element and its length.
     """
