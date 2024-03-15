@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Implementation of Static typing of Python
 """
