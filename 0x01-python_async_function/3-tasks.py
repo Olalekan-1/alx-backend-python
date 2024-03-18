@@ -4,7 +4,6 @@
 Implementation of python Async function - Co-routine
 """
 import asyncio as a
-from typing import List
 
 
 wait_random: any = __import__('0-basic_async_syntax').wait_random
