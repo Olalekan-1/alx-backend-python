@@ -11,6 +11,6 @@ async def wait_random(max_delay: int = 10) -> float:
     """
     Waits for an random time between th range of 0 to max_delay
     """
-    time = rd.uniform(0, max_delay)
+    time: float = rd.uniform(0, max_delay)
     await a.sleep(time)
     return time
