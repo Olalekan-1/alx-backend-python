@@ -14,7 +14,3 @@ async def wait_random(max_delay=10):
     time = rd.uniform(0, max_delay)
     await a.sleep(time)
     return time
-
-
-if __name__ == "__main__":
-    a.run(wait_random())
