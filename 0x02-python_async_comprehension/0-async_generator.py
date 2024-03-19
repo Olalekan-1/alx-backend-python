@@ -3,9 +3,9 @@
 """
 Implementation of python Async function - Co-routine
 """
+from typing import Generator
 import asyncio as a
 import random as rd
-from typing import Generator
 
 
 async def async_generator() -> Generator[float]:
