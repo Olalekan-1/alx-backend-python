@@ -5,10 +5,10 @@ Implementation of python Async function - Co-routine
 """
 import asyncio as a
 import random as rd
-from typing import List, Any
+from typing import Generator
 
 
-async def async_generator() -> Any:
+async def async_generator() -> Generator[float]:
     """ Async generator """
     for _ in range(10):
         await a.sleep(1)
