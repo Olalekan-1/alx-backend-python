@@ -5,13 +5,12 @@ Implementation of python Async function - Co-routine
 """
 import asyncio as a
 from time import time
-from typing import Any
 
 
 async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
-async def measure_runtime() -> Any:
+async def measure_runtime() -> float:
     """ runs coroutine in parallel
     """
     start = time()
