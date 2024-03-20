@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-
 """
 Implementation of python Async function - Co-routine
 """
-from typing import Generator
-import asyncio as a
-import random as rd
+import asyncio
+import random
+from typing import AsyncGenerator
 
 
-async def async_generator() -> Generator[float]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """ Async generator """
     for _ in range(10):
-        await a.sleep(1)
-        yield rd.uniform(0, 10)
+        await asyncio.sleep(1)
+        yield random.uniform(0, 10)
