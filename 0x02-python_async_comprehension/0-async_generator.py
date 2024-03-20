@@ -9,7 +9,7 @@ from typing import AsyncGenerator
 
 
 async def async_generator() -> AsyncGenerator[float, None]:
-    """ Async generator 
+    """ Async generator
     Generates 10 numbers at regular interval
     """
     for _ in range(10):
