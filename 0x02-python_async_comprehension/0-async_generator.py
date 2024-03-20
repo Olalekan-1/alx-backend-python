@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Task 0 - Write a co-routine function called async_generator
-Implementation of python Async function - Co-routine
+Task 0 - Write a coroutine called async_generator that takes no arguments.
 """
 import asyncio
 import random
@@ -9,8 +8,8 @@ from typing import AsyncGenerator
 
 
 async def async_generator() -> AsyncGenerator[float, None]:
-    """ Async generator 
-    Generates 10 numbers at regular interval
+    """
+     Generate 10 numbers at regular intervals
     """
     for _ in range(10):
         await asyncio.sleep(1)
