@@ -4,11 +4,30 @@
 
 import unittest
 from unittest.mock import patch
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
+from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
 
 
 class TestGithubOrgClient(unittest.TestCase):
+
+    endpoint = "https://api.github.com/orgs/testorg/repos"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.get_patcher = patch('client.requests.get')
+        cls.mock_get = cls.get_patcher.start()
+
+        cls.mock_get.side_effect = [
+            lambda url: org_payload if url == endpoint else repos_payload,
+            lambda url: repos_payload,
+            lambda url: apache2_repos,
+        ]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.get_patcher.stop()
+
     """ Test Github client client """
     @parameterized.expand([
         ("google",),
@@ -48,7 +67,6 @@ class TestGithubOrgClient(unittest.TestCase):
             {"name": "repo3", "license": {"key": "mit"}},
         ]
 
-        endpoint = "https://api.github.com/orgs/testorg/repos"
         with patch.object(GithubOrgClient,
                           '_public_repos_url', return_value=endpoint):
             mock_get_json.return_value = known_payload
@@ -69,6 +87,17 @@ class TestGithubOrgClient(unittest.TestCase):
 
         result = client.has_license(repo, license_key)
         self.assertEqual(result, expected_result)
+
+    def test_public_repos(self):
+        client = GithubOrgClient("testorg")
+        repos = client.public_repos()
+
+        self.assertEqual(repos, self.expected_repos)
+
+    def test_public_repos_with_license(self):
+        client = GithubOrgClient("testorg")
+        repos = client.public_repos(license="apache-2.0")
+        self.assertEqual(repos, self.apache2_repos)
 
 
 if __name__ == "__main__":
