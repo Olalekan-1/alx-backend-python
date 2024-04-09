@@ -37,6 +37,7 @@ class TestGetJson(unittest.TestCase):
         ("http://holberton.io", {"payload": False}),
     ])
     def test_get_json(self, test_url, test_payload, mock_get):
+        """ Test get jsons"""
         mock_response = Mock()
         mock_response.json.return_value = test_payload
         mock_get.return_value = mock_response
@@ -49,6 +50,7 @@ class TestMemoize(unittest.TestCase):
     """ . """
 
     def test_memoize(self):
+        """ tests mmoize """
         class TestClass:
             def a_method(self):
                 return 42

@@ -9,13 +9,14 @@ from client import GithubOrgClient
 
 
 class TestGithubOrgClient(unittest.TestCase):
-
+    """ Test Github client client """
     @parameterized.expand([
         ("google",),
         ("abc",),
     ])
     @patch('client.get_json')
     def test_org(self, org_name, mock_get_json):
+        """ tests_ org testing """
         client = GithubOrgClient(org_name)
         expected_url = GithubOrgClient.ORG_URL.format(org=org_name)
 
